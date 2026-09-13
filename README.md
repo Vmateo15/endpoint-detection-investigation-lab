@@ -81,7 +81,7 @@ SecurityEvent
 
 This query identifies the schtasks.exe activity used to create, query, and remove the SOC-Lab-UpdateCheck scheduled task.
 
-Reconstruct the Suspicious Process Activity
+## Reconstruct the Suspicious Process Activity
 
 ```kql
 SecurityEvent
@@ -129,10 +129,12 @@ The activity was intentionally generated in a controlled lab, but the telemetry 
 
 After identifying the persistence mechanism, I removed the scheduled task and deleted the simulated PowerShell script.
 The following actions were performed:
-Deleted SOC-Lab-UpdateCheck
-Queried the scheduled task again to confirm it no longer existed
-Removed C:\SOC-Lab\invoice_update.ps1
-Used Test-Path to verify that the script had been removed successfully
+
+- Deleted SOC-Lab-UpdateCheck
+- Queried the scheduled task again to confirm it no longer existed
+- Removed C:\SOC-Lab\invoice_update.ps1
+- Used Test-Path to verify that the script had been removed successfully
+
 The final verification returned False, confirming that the simulated script was no longer present on the endpoint.
 
 ## MITRE ATT&CK Mapping
