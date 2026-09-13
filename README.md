@@ -169,37 +169,37 @@ The following screenshots document the investigation from initial execution thro
 
 This screenshot shows Sysmon Event ID 1 capturing the execution of `powershell.exe` with the `-ExecutionPolicy Bypass` parameter and the `invoice_update.ps1` script.
 
-![PowerShell Execution](screenshots/01-powershell-execution.png)
+![PowerShell Execution](screenshots/-PowerShell-execution.png)
 
 ### 2. Parent-Child Process Relationship
 
 This screenshot shows the process relationship between `cmd.exe` and `powershell.exe`, helping reconstruct how the suspicious activity was launched.
 
-![Parent-Child Process](screenshots/02-parent-child-process.png)
+![Parent-Child Process](screenshots/-Parent-child-process.png)
 
 ### 3. Containment and Remediation
 
 This screenshot shows the scheduled task being deleted and the simulated script being removed from the endpoint.
 
-![Containment and Remediation](screenshots/03-containment-remediation.png)
+![Containment and Remediation](screenshots/-Containment-remediation.png)
 
 ### 4. KQL Process Hunt
 
 This screenshot shows Microsoft Sentinel querying Windows Security Event ID 4688 for `cmd.exe`, `powershell.exe`, and `schtasks.exe` activity.
 
-![KQL Process Hunt](screenshots/04-kql-process-hunt.png)
+![KQL Process Hunt](screenshots/-kql-process-hunt.png)
 
 ### 5. Scheduled Task Investigation
 
 This screenshot shows KQL results for `schtasks.exe`, including creation, verification, and deletion of the `SOC-Lab-UpdateCheck` scheduled task.
 
-![Scheduled Task Investigation](screenshots/05-scheduled-task-timeline.png)
+![Scheduled Task Investigation](screenshots/-scheduled-task-timeline.png)
 
 ### 6. Final Investigation Timeline
 
 This screenshot shows the correlated timeline of the simulated activity, allowing the sequence of PowerShell, command shell, and scheduled-task activity to be reviewed chronologically.
 
-![Final Investigation Timeline](screenshots/06-final-investigation-timeline.png)
+![Final Investigation Timeline](screenshots/-final-investigation-timeline.png)
 
 
 ## Skills Demonstrated
