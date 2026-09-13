@@ -1,0 +1,9 @@
+SecurityEvent
+| where TimeGenerated > ago(6h)
+| where EventID == 4688
+| where NewProcessName has_any ("cmd.exe", "powershell.exe", "schtasks.exe")
+| where CommandLine contains "SOC-Lab"
+    or CommandLine contains "invoice_update.ps1"
+    or CommandLine contains "SOC-Lab-UpdateCheck"
+| project TimeGenerated, Account, NewProcessName, ParentProcessName, CommandLine
+| sort by TimeGenerated asc
