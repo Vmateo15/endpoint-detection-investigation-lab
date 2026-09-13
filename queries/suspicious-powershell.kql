@@ -1,0 +1,8 @@
+SecurityEvent
+| where TimeGenerated > ago(6h)
+| where EventID == 4688
+| where NewProcessName endswith @"\powershell.exe"
+| where CommandLine contains "invoice_update.ps1"
+    or CommandLine contains "ExecutionPolicy Bypass"
+| project TimeGenerated, Computer, Account, NewProcessName, ParentProcessName, CommandLine
+| sort by TimeGenerated asc
