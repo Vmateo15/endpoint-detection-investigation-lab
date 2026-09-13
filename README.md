@@ -38,7 +38,7 @@ All activity was performed inside my isolated lab environment for defensive secu
 
 ## Detection and Investigation
 
-Sysmon captured process creation events generated during the simulation. I reviewed the events in Windows Event Viewer and then used Microsoft Sentinel and KQL to investigate the activity centrally.
+Sysmon Event ID 1 was used to review process creation activity locally in Windows Event Viewer, while Windows Security Event ID 4688 was ingested into Microsoft Sentinel and investigated with KQL for centralized process analysis.
 
 The investigation focused on:
 
