@@ -169,25 +169,25 @@ The following screenshots document the investigation from initial execution thro
 
 This screenshot shows Sysmon Event ID 1 capturing the execution of `powershell.exe` with the `-ExecutionPolicy Bypass` parameter and the `invoice_update.ps1` script.
 
-![PowerShell Execution](screenshots/-PowerShell-execution.png)
+![PowerShell Execution](screenshots/-powershell-execution.png)
 
 ### 2. Parent-Child Process Relationship
 
 This screenshot shows the process relationship between `cmd.exe` and `powershell.exe`, helping reconstruct how the suspicious activity was launched.
 
-![Parent-Child Process](screenshots/-Parent-child-process.png)
+![Parent-Child Process](screenshots/-parent-child-process.png)
 
 ### 3. Containment and Remediation
 
 This screenshot shows the scheduled task being deleted and the simulated script being removed from the endpoint.
 
-![Containment and Remediation](screenshots/Containment-remediation.png)
+![Containment and Remediation](screenshots/-containment-remediation.png)
 
 ### 4. KQL Process Hunt
 
 This screenshot shows Microsoft Sentinel querying Windows Security Event ID 4688 for `cmd.exe`, `powershell.exe`, and `schtasks.exe` activity.
 
-![KQL Process Hunt](screenshots/kql-proccess-hunt.png)
+![KQL Process Hunt](screenshots/-kql-proccess-hunt.png)
 
 ### 5. Scheduled Task Investigation
 
