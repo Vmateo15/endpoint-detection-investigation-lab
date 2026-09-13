@@ -68,7 +68,7 @@ SecurityEvent
 
 This query isolates the simulated PowerShell execution and allows an analyst to review the account, parent process, and command-line arguments associated with the activity.
 
-## Hunt for Scheduled Task Activity
+### Hunt for Scheduled Task Activity
 
 ```kql
 SecurityEvent
@@ -81,7 +81,7 @@ SecurityEvent
 
 This query identifies the schtasks.exe activity used to create, query, and remove the SOC-Lab-UpdateCheck scheduled task.
 
-## Reconstruct the Suspicious Process Activity
+### Reconstruct the Suspicious Process Activity
 
 ```kql
 SecurityEvent
