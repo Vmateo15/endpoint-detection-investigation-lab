@@ -68,19 +68,22 @@ SecurityEvent
 
 This query isolates the simulated PowerShell execution and allows an analyst to review the account, parent process, and command-line arguments associated with the activity.
 
-Hunt for Scheduled Task Activity
+## Hunt for Scheduled Task Activity
 
+```kql
 SecurityEvent
 | where TimeGenerated > ago(6h)
 | where EventID == 4688
 | where NewProcessName endswith @"\schtasks.exe"
 | project TimeGenerated, Computer, Account, NewProcessName, ParentProcessName, CommandLine
 | sort by TimeGenerated asc
+```
 
 This query identifies the schtasks.exe activity used to create, query, and remove the SOC-Lab-UpdateCheck scheduled task.
 
 Reconstruct the Suspicious Process Activity
 
+```kql
 SecurityEvent
 | where TimeGenerated > ago(6h)
 | where EventID == 4688
@@ -90,6 +93,7 @@ SecurityEvent
     or CommandLine contains "SOC-Lab-UpdateCheck"
 | project TimeGenerated, Account, NewProcessName, ParentProcessName, CommandLine
 | sort by TimeGenerated asc
+```
 
 The combined query was used to reconstruct the sequence of activity and correlate the PowerShell execution with the scheduled-task persistence behavior.
 
@@ -113,13 +117,16 @@ Key findings included:
 ```text
 cmd.exe
   └── powershell.exe
-      ├── invoice_update.ps1
-      └── schtasks.exe
-          └── SOC-Lab-UpdateCheck
+      └── invoice_update.ps1
+
+schtasks.exe
+  └── SOC-Lab-UpdateCheck
 ```
 
 The activity was intentionally generated in a controlled lab, but the telemetry resembles behavior that could require investigation in a production SOC environment.
-Containment and Remediation
+
+## Containment and Remediation
+
 After identifying the persistence mechanism, I removed the scheduled task and deleted the simulated PowerShell script.
 The following actions were performed:
 Deleted SOC-Lab-UpdateCheck
