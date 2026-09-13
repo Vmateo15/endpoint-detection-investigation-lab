@@ -187,7 +187,7 @@ This screenshot shows the scheduled task being deleted and the simulated script 
 
 This screenshot shows Microsoft Sentinel querying Windows Security Event ID 4688 for `cmd.exe`, `powershell.exe`, and `schtasks.exe` activity.
 
-![KQL Process Hunt](screenshots/kql-process-hunt.png)
+![KQL Process Hunt](screenshots/kql-proccess-hunt.png)
 
 ### 5. Scheduled Task Investigation
 
