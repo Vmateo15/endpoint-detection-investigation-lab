@@ -1,0 +1,6 @@
+SecurityEvent
+| where TimeGenerated > ago(6h)
+| where EventID == 4688
+| where NewProcessName endswith @"\schtasks.exe"
+| project TimeGenerated, Computer, Account, NewProcessName, ParentProcessName, CommandLine
+| sort by TimeGenerated asc
